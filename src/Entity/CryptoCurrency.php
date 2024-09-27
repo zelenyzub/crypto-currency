@@ -9,6 +9,22 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CryptoCurrencyRepository::class)]
 class CryptoCurrency
 {
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'symbol' => $this->getSymbol(),
+            'currentPrice' => $this->getCurrentPrice(),
+            'totalVolume' => $this->getTotalVolume(),
+            'ath' => $this->getAth(),
+            'athDate' => $this->getAthDate()->format('Y-m-d H:i:s'),
+            'atl' => $this->getAtl(),
+            'atlDate' => $this->getAtlDate()->format('Y-m-d H:i:s'),
+            'updatedAt' => $this->getUpdatedAt()->format('Y-m-d H:i:s'),
+        ];
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
