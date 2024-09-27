@@ -48,4 +48,11 @@ class ApiCryptoCurrencyController extends AbstractController
         return new JsonResponse($currencyArray);
     }
 
+    // -----/api/find-currency-by-id/{id}-----
+    #[Route('/api/find-currency-by-id/{id}', name: 'crypto_currency_by_id', methods: ['GET'])]
+    public function getCryptoCurrencyById($id, CryptoCurrencyRepository $repo): JsonResponse
+    {
+        $currency = $repo->findById($id);
+        return new JsonResponse($currency ? $currency->toArray() : null);
+    }
 }

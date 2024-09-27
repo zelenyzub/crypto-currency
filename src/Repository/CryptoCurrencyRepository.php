@@ -39,4 +39,12 @@ class CryptoCurrencyRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findByid($id) {
+        return $this->createQueryBuilder('c') 
+            ->where('c.id = :id') 
+            ->setParameter('id', $id) 
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
