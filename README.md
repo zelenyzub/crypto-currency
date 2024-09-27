@@ -1,5 +1,8 @@
 # Cryptocurrency Technical Task
 
+# Symfony
+  - 7.1.5
+
 # Requiremqnts
   - PHP 8.2.0
   - Composer 2.5.1
