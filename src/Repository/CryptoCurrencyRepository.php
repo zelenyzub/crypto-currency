@@ -26,8 +26,16 @@ class CryptoCurrencyRepository extends ServiceEntityRepository
 
     public function findByMinPrice($minPrice) {
         return $this->createQueryBuilder('c')
-            ->where('c.currentPrice > :minPrice')
+            ->where('c.currentPrice >= :minPrice')
             ->setParameter('minPrice',$minPrice)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByMaxPrice($maxPrice) {
+        return $this->createQueryBuilder('c')
+            ->where('c.currentPrice <= :maxPrice')
+            ->setParameter('maxPrice', $maxPrice)
             ->getQuery()
             ->getResult();
     }
